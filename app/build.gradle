@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-	compileSdkVersion compileAndTargetSdkVersion
+	compileSdkVersion 33
 	buildToolsVersion '30.0.3'
 
 	defaultConfig {
-		applicationId "com.example.fcm"
-		minSdkVersion 21
-		targetSdkVersion compileAndTargetSdkVersion
-		versionCode 1
-		versionName "1.0"
+		applicationId "com.xtaolabs.fcm"
+		minSdkVersion 24
+		targetSdkVersion 33
+		versionCode 5
+		versionName "1.0.5"
 		resConfigs('en', 'xxxhdpi')
 		ndk {
 			abiFilters "x86", "x86_64", "arm64-v8a", "armeabi-v7a"
@@ -33,12 +33,22 @@ android {
 		preDexLibraries true
 		maxProcessCount 8
 	}
+
+	lintOptions {
+		checkReleaseBuilds false
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
 }
 
 dependencies {
-	implementation 'androidx.appcompat:appcompat:1.2.0'
-	implementation 'com.google.firebase:firebase-analytics:18.0.3'
-	implementation 'com.google.firebase:firebase-messaging:21.1.0'
+	implementation 'androidx.appcompat:appcompat:1.6.1'
+	implementation platform('com.google.firebase:firebase-bom:32.2.0')
+	implementation 'com.google.firebase:firebase-analytics:21.3.0'
+	implementation 'com.google.firebase:firebase-messaging:23.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
